@@ -1,27 +1,24 @@
 #1932 정수 삼각형
-# 깊이 우선 탐색으로 풀어야하나..
-# dp로 풀어야하나..
-#dp 로간다.
-# 전에 왔을 때 자리의 최대수를 놓고
-# 내가 오른쪽위에 왼쪽위를 받을 때 최대인걸 선택해서 업데이트
-# 근데 맨 왼쪽이나 끝에는 그냥 본인 머리 위에 거를 선택하는 구문을 추가
-#해서 맨 밑바닥에 있는 것중에서 최고 큰거를 팝!
+# 하나씩 해보기엔 졸라 크기 때문에
+#dp로 갑니다.
 
 import sys
 input = sys.stdin.readline
 n = int(input())
+#직각 삼각형 모양으로 값을 받아주고 dp테이블도 동일하게 만들어 줍니다.
 arr =[list(map(int,input().split())) for _ in range(n)]
 # print(*arr,sep="\n")
 dp = [[-1 for j in range(i)] for i in range(1,n+1)]
+#초기값 설정
 dp[0][0]=arr[0][0]
 
 for i in range(n):
     for j in range(i+1):
         if dp[i][j] == -1:
-            if i==1:
-                dp[1][0]=dp[0][0] + arr[1][0]
-                dp[1][1]=dp[0][0] + arr[1][1]
-                continue
+            # if i==1:
+            #     dp[1][0]=dp[0][0] + arr[1][0]
+            #     dp[1][1]=dp[0][0] + arr[1][1]
+            #     continue
             if j==0: #왼쪽끝
                 dp[i][j] = dp[i-1][j] + arr[i][j]
             elif j==i: # 오른쪽 끝
