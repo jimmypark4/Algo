@@ -9,7 +9,9 @@ dp = [0] * N
 
 for i in range(N):
     for j in range(i):
+        #전있던 것들 중에서 내가 젤 큰거 취하고
         if arr[i] > arr[j] and dp[i] < dp[j]:
             dp[i] = dp[j]
+    # 거기에 1 더하기.
     dp[i] +=1
 print(max(dp))
