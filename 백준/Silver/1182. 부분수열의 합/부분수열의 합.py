@@ -1,22 +1,23 @@
 import sys
 input = sys.stdin.readline
 
-N , S = map(int, input().split())
-arr = list(map(int,input().split()))
-cnt = 0
-ans = []
+n , m = map(int , input().split())
+s = list(map(int,input().split()))
 
-def dfs(start):
-    global cnt
-    if sum(ans) == S and len(ans) > 0:
-        cnt +=1
-        
+global ans
+ans = 0
 
-    for i in range(start, N):
-        ans.append(arr[i])
-        dfs(i+1)
-        ans.pop()
+def dfs(index,_sum):
+    global ans
+    if index == n:
+        if _sum == m:
+            ans += 1
+        return
+    dfs(index+1, _sum + 0)
+    dfs(index+1, _sum + s[index])
 
+dfs(0,0)
+if m == 0:
+    ans -= 1
+print(ans)
 
-dfs(0)
-print(cnt)
