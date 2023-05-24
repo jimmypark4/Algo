@@ -21,6 +21,7 @@ for i in range(1, N):
         current_count = 1
 
 # 마지막 카드들의 개수를 확인
+#마지막 카드를 계산을 안하면 안된다...........ㅎㅎ
 if current_count > max_count:
     max_card = current_card
     max_count = current_count
