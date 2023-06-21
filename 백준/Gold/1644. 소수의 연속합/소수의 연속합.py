@@ -22,9 +22,9 @@ for i in range(2,n+1):
 s,e = 0,0
 total = primes[0]
 while True:
-    if s > e:
-        s,e = e,s
-        total = sum(primes[s:e])
+    # if s > e:
+    #     s,e = e,s
+    #     total = sum(primes[s:e])
 
     if total == n:
         answer += 1
