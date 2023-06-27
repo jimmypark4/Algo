@@ -2,6 +2,9 @@ N , K = map(int,input().split())
 arr = list( list(map(int,input().split())) for _ in range(N))
 arr.sort(key= lambda x : [x[1],x[0]])
 
+if N == 1:
+    print(1)
+    exit()
 ex = arr[0]
 answer = 1
 cnt = 0
