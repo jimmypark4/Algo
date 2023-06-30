@@ -8,21 +8,15 @@ visited = list( [-1]*m for _ in range(n) )
 stack = deque()
 stack.append((0,0))
 visited[0][0] = 0
-# visited[n-1][m-1] = 9999999999
 while stack:
-    x,y = stack.popleft()
+    x,y = stack.popleft() #pop이 아니라 앞에서 꺼내는게 중요!
     for i in range(4):
         nx = dx[i] + x
         ny = dy[i] + y
-        # if nx == n-1 and ny == m-1:
-        #     visited[nx][ny] = min(visited[nx][ny],visited[x][y] + 1)
-        #     continue
-
         if nx <0 or ny <0 or nx >= n or ny >= m: continue
         if paper[nx][ny] == "0" or visited[nx][ny] >= 0: continue
         visited[nx][ny] = visited[x][y] + 1
         stack.append((nx,ny))
-# print(*visited,sep='\n')
 
 print(visited[n-1][m-1]+1)
 """
